@@ -13,7 +13,7 @@
             fx:controller="PrimeNet.ControllerForSearchHistory">
     <stylesheets>
         <URL value="@../DesignFiles/Design.css"/>
-    </stylesheets>1
+    </stylesheets>
     <center>
         <TableView fx:id="searchHistoryTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <columns>
