@@ -32,6 +32,7 @@ public class ControllerCreateUser {
     //creating a new user with his own password
     @FXML
     private void CreateNewUser(ActionEvent e) throws IOException {
+        // this checks if username is correct
         if (CreateUserUsername.getText().length() < 3){
             CreateUserUsername.setPromptText("mind. 3 Zeichen bitte");
         }
