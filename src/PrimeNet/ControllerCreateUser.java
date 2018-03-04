@@ -71,6 +71,7 @@ public class ControllerCreateUser {
                     }
                 }
 
+                //if username is not already in File a new username will be created
                 if (!written) {
                     writer.write(CreateUserUsername.getText() + ":"
                             + auth.hash(CreateUserPassword.getText().toCharArray()) + ":"
