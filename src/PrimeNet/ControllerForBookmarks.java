@@ -40,7 +40,7 @@ public class ControllerForBookmarks {
     private boolean doubleClick = false;
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         setUpTableForBookmarks();
         setUpBookmarksLikeDislikeComboBox();
         readLinesFromBookmarks(Controller.getUsername() + "/Bookmarks.txt");
@@ -106,12 +106,14 @@ public class ControllerForBookmarks {
                     if (mouseEvent.getClickCount() == 2) {
                         doubleClick = true;
                         Controller.getBookmarksWindow().close();
-                        try{
+                        try {
                             Controller.setDoubleClickInFavouriteOrBookmarksWindow(
                                     bookmarksTable.getSelectionModel().getSelectedItem().getTitle(),
                                     bookmarksTable.getSelectionModel().getSelectedItem().getYear());
                             //sometimes if you do not accurately click a row, a NullPointerException will occur.
-                        } catch (NullPointerException e){e.printStackTrace();}
+                        } catch (NullPointerException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -127,7 +129,7 @@ public class ControllerForBookmarks {
     private void closingBookmarksWindowAction(Stage stage) {
         stage.setOnHiding(event -> {
             overwriteInBookmarks();
-            if(!doubleClick)
+            if (!doubleClick)
                 Controller.setWindowCloseAction();
         });
     }

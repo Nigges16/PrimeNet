@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -34,7 +35,8 @@ public class ControllerCreateUser {
         List<String> lines = new ArrayList<>();
         try {
             lines = Files.readAllLines(Paths.get("passwords.txt"));
-        } catch (IOException e1) { }
+        } catch (IOException e1) {
+        }
 
         boolean written = false;
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("passwords.txt"))) {
@@ -70,7 +72,8 @@ public class ControllerCreateUser {
                         + CreateUserAPIkey.getText());
                 writer.newLine();
             }
-        } catch (IOException ioException) { }
+        } catch (IOException ioException) {
+        }
 
         CreateNewUser.getScene().getWindow().hide();
     }

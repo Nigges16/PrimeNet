@@ -71,12 +71,14 @@ public class ControllerForFavourite {
                     if (mouseEvent.getClickCount() == 2) {
                         doubleClick = true;
                         Controller.getFavouriteWindow().close();
-                        try{
+                        try {
                             Controller.setDoubleClickInFavouriteOrBookmarksWindow(
                                     favouriteTable.getSelectionModel().getSelectedItem().getTitle(),
                                     favouriteTable.getSelectionModel().getSelectedItem().getYear());
                             //sometimes if you do not accurately click a row, a NullPointerException will occur.
-                        } catch (NullPointerException e){e.printStackTrace();}
+                        } catch (NullPointerException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }

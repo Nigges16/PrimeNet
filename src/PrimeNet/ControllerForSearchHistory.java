@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+
 import java.io.File;
 
 
@@ -25,12 +26,12 @@ public class ControllerForSearchHistory {
     private ObservableList<Film> keywordAndTimeList = FXCollections.observableArrayList();
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         HelperMethods.readFilmAndDateFromFile(Controller.getUsername() + "/SearchHistory.txt", keywordAndTimeList);
         setUpSearchHistoryTable();
     }
 
-    private void setUpSearchHistoryTable(){
+    private void setUpSearchHistoryTable() {
         //keywordColumn
         searchKeywordColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
 
@@ -46,11 +47,13 @@ public class ControllerForSearchHistory {
                 if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
                     if (mouseEvent.getClickCount() == 2) {
                         doubleClick = true;
-                        try{
+                        try {
                             Controller.setDoubleClickInSearchHistory(
                                     searchHistoryTable.getSelectionModel().getSelectedItem().getTitle());
                             //sometimes if you do not accurately click a row, a NullPointerException will occur.
-                        } catch (NullPointerException e){e.printStackTrace();}
+                        } catch (NullPointerException e) {
+                            e.printStackTrace();
+                        }
                         Controller.getSearchHistoryWindow().close();
                     }
                 }
@@ -58,7 +61,7 @@ public class ControllerForSearchHistory {
         });
     }
 
-    public void clickDeleteHistory(){
+    public void clickDeleteHistory() {
         ObservableList<Film> emptyList = FXCollections.observableArrayList();
         keywordAndTimeList = emptyList;
         searchHistoryTable.setItems(keywordAndTimeList);
