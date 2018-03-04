@@ -34,7 +34,8 @@ public class ControllerCreateUser {
     private void CreateNewUser(ActionEvent e) throws IOException {
         // this checks if username is correct
         if (CreateUserUsername.getText().length() < 3){
-            CreateUserUsername.setText("mind. 3 Zeichen bitte");
+            CreateUserUsername.clear();
+            CreateUserUsername.setPromptText("mind. 3 Zeichen bitte");
         }
         else{
             List<String> lines = new ArrayList<>();
