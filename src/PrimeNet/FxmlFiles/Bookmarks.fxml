@@ -11,19 +11,21 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PrimeNet.ControllerForBookmarks">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="PrimeNet.ControllerForBookmarks">
     <stylesheets>
-        <URL value="@../DesignFiles/Design.css" />
+        <URL value="@../DesignFiles/Design.css"/>
     </stylesheets>
     <top>
         <VBox prefHeight="353.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
                 <TableView fx:id="bookmarksTable" prefHeight="349.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="bookmarksTitleColumn" prefWidth="359.0" text="Titel" />
-                        <TableColumn fx:id="bookmarksYearColumn" prefWidth="79.0" text="Jahr" />
-                  <TableColumn fx:id="bookmarksRateColumn" prefWidth="87.0" text="Bewertung" />
-                        <TableColumn fx:id="bookmarksFavouriteColumn" prefWidth="69.0" text="Favorit" />
+                        <TableColumn fx:id="bookmarksTitleColumn" prefWidth="359.0" text="Titel"/>
+                        <TableColumn fx:id="bookmarksYearColumn" prefWidth="79.0" text="Jahr"/>
+                        <TableColumn fx:id="bookmarksRateColumn" prefWidth="87.0" text="Bewertung"/>
+                        <TableColumn fx:id="bookmarksFavouriteColumn" prefWidth="69.0" text="Favorit"/>
                     </columns>
                 </TableView>
             </children>
@@ -34,14 +36,15 @@
             <children>
                 <Button mnemonicParsing="false" onAction="#deleteFilmInBookmarks" text="Entfernen">
                     <opaqueInsets>
-                        <Insets />
+                        <Insets/>
                     </opaqueInsets>
                 </Button>
-            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <ComboBox fx:id="bookmarksLikeDislikeComboBox" onAction="#clickBookmarksLikeDislikeComboBox" prefWidth="150.0" promptText="Filtern" />
+                <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+                <ComboBox fx:id="bookmarksLikeDislikeComboBox" onAction="#clickBookmarksLikeDislikeComboBox"
+                          prefWidth="150.0" promptText="Filtern"/>
             </children>
             <padding>
-                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
             </padding>
         </HBox>
     </bottom>
