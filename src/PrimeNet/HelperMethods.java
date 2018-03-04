@@ -7,17 +7,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-abstract class HelperMethods{
+abstract class HelperMethods {
 
-    public static boolean isThisFilmInFile(Film film, String stringOfFile){
-        String findMovieKeyword = film.getTitle() + "\t" +  String.valueOf(film.getYear());
-        if(stringOfFile == null){
+    public static boolean isThisFilmInFile(Film film, String stringOfFile) {
+        String findMovieKeyword = film.getTitle() + "\t" + String.valueOf(film.getYear());
+        if (stringOfFile == null) {
             stringOfFile = "";
         }
         Matcher matcher = Pattern.compile(findMovieKeyword).matcher(stringOfFile);
@@ -25,14 +26,14 @@ abstract class HelperMethods{
     }
 
     //search for the line which contains the film
-    private static int filmIsInLineNumber(File file, String title, String year){
+    private static int filmIsInLineNumber(File file, String title, String year) {
         String stringOfFile = makeFileToString(file);
-        if(isThisFilmInFile(new Film(title, Integer.parseInt(year)), stringOfFile)){
+        if (isThisFilmInFile(new Film(title, Integer.parseInt(year)), stringOfFile)) {
             BufferedReader br;
             String line;
             int stringInLineNumber = 0;
-            try{
-                br  = new BufferedReader(new FileReader(file));
+            try {
+                br = new BufferedReader(new FileReader(file));
                 int counter = 0;
                 while ((line = br.readLine()) != null) {
                     if (line.equals(title + "\t" + year)) {
@@ -41,21 +42,22 @@ abstract class HelperMethods{
                     }
                     counter++;
                 }
-            } catch (IOException e) {e.printStackTrace();}
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return stringInLineNumber;
-        }
-        else
+        } else
             return -1;
     }
 
     //first the file will be checked whether it has the film already inside
     //if so nothing happens
-    public static void writeFilmInFile(String pathname, String filmTitle, String filmYear, String filmRate){
-        File file = new File (pathname);
+    public static void writeFilmInFile(String pathname, String filmTitle, String filmYear, String filmRate) {
+        File file = new File(pathname);
         FileWriter writer;
         String stringOfFile = makeFileToString(file);
-        if(!isThisFilmInFile(new Film(filmTitle, Integer.parseInt(filmYear)), stringOfFile )){
-            try{
+        if (!isThisFilmInFile(new Film(filmTitle, Integer.parseInt(filmYear)), stringOfFile)) {
+            try {
                 writer = new FileWriter(file, true);
                 writer.write(filmTitle);
                 writer.write("\t");
@@ -64,7 +66,9 @@ abstract class HelperMethods{
                 writer.write(filmRate);
                 writer.write(System.getProperty("line.separator"));
                 writer.flush();
-            }catch (IOException e) { e.printStackTrace(); }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -76,27 +80,28 @@ abstract class HelperMethods{
         }
     }
 
-    public static void copyOriginalFileBesidesOneLine(File original, File copy, String title, String year){
+    public static void copyOriginalFileBesidesOneLine(File original, File copy, String title, String year) {
         int counter = 0;
         String line;
-        try{
+        try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(original)));
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(copy)));
             int stringInLine = HelperMethods.filmIsInLineNumber(original, title, year);
-            if (stringInLine == -1){
-                try{
-                    while((line = br.readLine()) != null){
+            if (stringInLine == -1) {
+                try {
+                    while ((line = br.readLine()) != null) {
                         bw.write(line);
                         bw.write(System.getProperty("line.separator"));
                     }
                     bw.close();
                     br.close();
-                } catch (Exception e){ e.printStackTrace();}
-            }
-            else{
-                try{
-                    while((line = br.readLine()) != null){
-                        if(counter !=  stringInLine){
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    while ((line = br.readLine()) != null) {
+                        if (counter != stringInLine) {
                             bw.write(line);
                             bw.write(System.getProperty("line.separator"));
                         }
@@ -104,46 +109,54 @@ abstract class HelperMethods{
                     }
                     bw.close();
                     br.close();
-                } catch (Exception e){ e.printStackTrace();}
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-        } catch (Exception e) {e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void overwriteSecondFileWithFirstFile(File sourceFile, File overwrittenFile){
+    public static void overwriteSecondFileWithFirstFile(File sourceFile, File overwrittenFile) {
         String line;
-        try{
+        try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(sourceFile)));
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(overwrittenFile)));
-            while ((line = br.readLine()) != null){
+            while ((line = br.readLine()) != null) {
                 bw.write(line);
                 bw.write(System.getProperty("line.separator"));
             }
             br.close();
             bw.close();
-        } catch (Exception e) {e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void openNewWindow(Stage stage, String title, Parent root){
-        try{
+    public static void openNewWindow(Stage stage, String title, Parent root) {
+        try {
             stage.setTitle(title);
             stage.setResizable(false);
-            stage.setScene(new Scene(root,600, 400));
+            stage.setScene(new Scene(root, 600, 400));
             stage.show();
-        }catch (IllegalStateException e){
+        } catch (IllegalStateException e) {
             stage.show();
         }
     }
 
-    public static String makeFileToString(File file){
+    public static String makeFileToString(File file) {
         String fileString = "";
         String line;
-        try{
+        try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-            while((line = br.readLine()) != null){
+            while ((line = br.readLine()) != null) {
                 fileString += line;
                 fileString += "\n";
             }
-        } catch (Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return fileString;
     }
 
@@ -163,9 +176,9 @@ abstract class HelperMethods{
                 //Strings in these lines are separated by a tab, we will get each of them and create a instance of film
                 //then we will add it to a new list which we will later use to generate our list in TableView
                 word = line.split("\t");
-                try{
+                try {
                     allFilms.add(makeFilm(word[0], Integer.parseInt(word[1]), word[2]));
-                } catch (ArrayIndexOutOfBoundsException e){
+                } catch (ArrayIndexOutOfBoundsException e) {
                     allFilms.add(makeFilm(word[0], Integer.parseInt(word[1])));
                 }
             }
@@ -175,12 +188,14 @@ abstract class HelperMethods{
             if (in != null) {
                 try {
                     in.close();
-                } catch (IOException e) { e.printStackTrace();}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
-    public static void readFilmAndDateFromFile(String pathname, ObservableList<Film> keywordAndTimeList){
+    public static void readFilmAndDateFromFile(String pathname, ObservableList<Film> keywordAndTimeList) {
         File file = new File(pathname);
 
         if (!file.canRead() || !file.isFile())
@@ -196,9 +211,9 @@ abstract class HelperMethods{
                 //Strings in these lines are separated by a tab, we will get each of them and create a instance of film
                 //then we will add it to a new list which we will later use to generate our list in TableView
                 word = line.split("\t");
-                try{
+                try {
                     keywordAndTimeList.add(makeFilmWithTime(word[0], word[1]));
-                } catch (ArrayIndexOutOfBoundsException e){
+                } catch (ArrayIndexOutOfBoundsException e) {
                     keywordAndTimeList.add(makeFilmWithTime(word[0], word[1]));
                 }
             }
@@ -208,23 +223,26 @@ abstract class HelperMethods{
             if (in != null) {
                 try {
                     in.close();
-                } catch (IOException e) { e.printStackTrace();}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
-    private static Film makeFilmWithTime(String keyword, String timeAndDate){
+    private static Film makeFilmWithTime(String keyword, String timeAndDate) {
         return new Film(keyword, timeAndDate);
     }
+
     private static Film makeFilm(String title, int year, String filmRate) {
         return new Film(title, year, filmRate);
     }
 
-    private static Film makeFilm(String title, int year){
+    private static Film makeFilm(String title, int year) {
         return new Film(title, year);
     }
 
-    public static void overwriteFileWithFilm(String pathname, ObservableList<Film> allFilms){
+    public static void overwriteFileWithFilm(String pathname, ObservableList<Film> allFilms) {
         File file = new File(pathname);
         FileWriter writer;
         try {
@@ -243,7 +261,7 @@ abstract class HelperMethods{
         }
     }
 
-    public static void printFile(String pathname){
+    public static void printFile(String pathname) {
         File file = new File(pathname);
 
         if (!file.canRead() || !file.isFile())
@@ -257,7 +275,7 @@ abstract class HelperMethods{
             while ((line = in.readLine()) != null) {
                 //Strings in these lines are separated by a tab, we will get each of them and create a instance of film
                 //then we will add it to a new list which we will later use to generate our list in favouriteTableView
-               System.out.println(line);
+                System.out.println(line);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -265,25 +283,27 @@ abstract class HelperMethods{
             if (in != null) {
                 try {
                     in.close();
-                } catch (IOException e) { e.printStackTrace();}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
-    public static void simpleFilter(String comboBoxValue, TableView<Film> table, ObservableList<Film> filmList){
+    public static void simpleFilter(String comboBoxValue, TableView<Film> table, ObservableList<Film> filmList) {
         String keyword = comboBoxValue;
         ObservableList<Film> selectedFilms;
         selectedFilms = FXCollections.observableArrayList();
         if (keyword == null) {
         } else if (keyword.equals("Alle")) {
             selectedFilms = filmList;
-        } else if (keyword.equals("Unbewertet")){
+        } else if (keyword.equals("Unbewertet")) {
             for (Film s : filmList) {
                 Matcher matcher = Pattern.compile(" ").matcher(s.getRate());
                 if (matcher.find())
                     selectedFilms.add(s);
             }
-        } else{
+        } else {
             for (Film s : filmList) {
                 Matcher matcher = Pattern.compile(keyword).matcher(s.getRate());
                 if (matcher.find())
@@ -293,10 +313,12 @@ abstract class HelperMethods{
         table.setItems(selectedFilms);
     }
 
-    public static void createAFile(String filename){
-        try{
+    public static void createAFile(String filename) {
+        try {
             FileWriter writer = new FileWriter(filename, true);
             writer.flush();
-        } catch (IOException e) {e.printStackTrace();}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

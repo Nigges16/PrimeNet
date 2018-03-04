@@ -43,14 +43,20 @@ public class Film {
         this.timeAndDate = new SimpleStringProperty(timeAndDate);
     }
 
-    public String getTimeAndDate() { return timeAndDate.get(); }
+    public String getTimeAndDate() {
+        return timeAndDate.get();
+    }
 
-    public SimpleStringProperty timeAndDateProperty() { return timeAndDate; }
+    public SimpleStringProperty timeAndDateProperty() {
+        return timeAndDate;
+    }
 
-    public void setTimeAndDate(String timeAndDate) { this.timeAndDate.set(timeAndDate); }
+    public void setTimeAndDate(String timeAndDate) {
+        this.timeAndDate.set(timeAndDate);
+    }
 
     public Film(String title, int year) {
-        this(title , year, " ");
+        this(title, year, " ");
     }
 
     public Image getPoster() {
