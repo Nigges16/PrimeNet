@@ -39,6 +39,7 @@ public class ControllerForSearchHistory {
 
         searchHistoryTable.setItems(keywordAndTimeList);
 
+        //if you do a double click the selected film will be shown in the main window
         searchHistoryTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
