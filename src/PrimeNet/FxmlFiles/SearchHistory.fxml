@@ -8,26 +8,28 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <?import java.net.URL?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PrimeNet.ControllerForSearchHistory">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="PrimeNet.ControllerForSearchHistory">
     <stylesheets>
-        <URL value="@../DesignFiles/Design.css" />
-    </stylesheets>
-   <center>
-      <TableView fx:id="searchHistoryTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="searchKeywordColumn" prefWidth="313.0" text="Suchbegriff" />
-          <TableColumn fx:id="searchTimeColumn" prefWidth="284.0" text="Datum" />
-        </columns>
-      </TableView>
-   </center>
-   <bottom>
-      <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <buttons>
-          <Button mnemonicParsing="false" onAction="#clickDeleteHistory" text="Historie löschen" />
-        </buttons>
-         <padding>
-            <Insets right="10.0" />
-         </padding>
-      </ButtonBar>
-   </bottom>
+        <URL value="@../DesignFiles/Design.css"/>
+    </stylesheets>1
+    <center>
+        <TableView fx:id="searchHistoryTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="searchKeywordColumn" prefWidth="313.0" text="Suchbegriff"/>
+                <TableColumn fx:id="searchTimeColumn" prefWidth="284.0" text="Datum"/>
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <buttons>
+                <Button mnemonicParsing="false" onAction="#clickDeleteHistory" text="Historie löschen"/>
+            </buttons>
+            <padding>
+                <Insets right="10.0"/>
+            </padding>
+        </ButtonBar>
+    </bottom>
 </BorderPane>

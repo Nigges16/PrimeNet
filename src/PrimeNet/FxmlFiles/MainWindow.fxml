@@ -15,54 +15,62 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PrimeNet.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/9.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="PrimeNet.Controller">
     <stylesheets>
-        <URL value="@../DesignFiles/Design.css" />
+        <URL value="@../DesignFiles/Design.css"/>
     </stylesheets>
     <top>
         <VBox prefHeight="389.0" prefWidth="780.0" BorderPane.alignment="CENTER">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="2000.0" text="Prime Net" textAlignment="CENTER" textFill="#a1642b" underline="true">
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="2000.0" text="Prime Net"
+                       textAlignment="CENTER" textFill="#a1642b" underline="true">
                     <font>
-                        <Font size="36.0" />
+                        <Font size="36.0"/>
                     </font>
                     <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets bottom="10.0"/>
                     </VBox.margin>
                 </Label>
                 <HBox prefHeight="24.0" prefWidth="731.0" spacing="10.0">
                     <children>
-                        <TextField fx:id="searchField" onAction="#onEnter" promptText="Suche" />
-                        <ComboBox fx:id="yearComboBox" onAction="#clickYearComboBox" prefWidth="150.0" promptText="Jahr" />
-                        <ComboBox fx:id="categoriesComboBox" onAction="#clickCategoriesComboBox" prefWidth="150.0" promptText="Kategorien" />
-                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" onAction="#clickSearchHistory" text="Chronik" />
-                        <Button mnemonicParsing="false" onAction="#clickFavourite" prefHeight="30.0" prefWidth="90.0" text="Favoriten" />
-                        <Button mnemonicParsing="false" onAction="#clickBookmarks" prefHeight="30.0" prefWidth="90.0" text="Merkliste" />
+                        <TextField fx:id="searchField" onAction="#onEnter" promptText="Suche"/>
+                        <ComboBox fx:id="yearComboBox" onAction="#clickYearComboBox" prefWidth="150.0"
+                                  promptText="Jahr"/>
+                        <ComboBox fx:id="categoriesComboBox" onAction="#clickCategoriesComboBox" prefWidth="150.0"
+                                  promptText="Kategorien"/>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+                        <Button mnemonicParsing="false" onAction="#clickSearchHistory" text="Chronik"/>
+                        <Button mnemonicParsing="false" onAction="#clickFavourite" prefHeight="30.0" prefWidth="90.0"
+                                text="Favoriten"/>
+                        <Button mnemonicParsing="false" onAction="#clickBookmarks" prefHeight="30.0" prefWidth="90.0"
+                                text="Merkliste"/>
                     </children>
                     <VBox.margin>
-                        <Insets />
+                        <Insets/>
                     </VBox.margin>
                 </HBox>
                 <HBox prefHeight="85.0" prefWidth="780.0">
                     <children>
-                        <Region prefHeight="85.0" prefWidth="258.0" HBox.hgrow="ALWAYS" />
-                        <ProgressIndicator fx:id="progressbar" prefHeight="85.0" prefWidth="0.0" progress="0.0" HBox.hgrow="ALWAYS" />
-                        <Region prefHeight="85.0" prefWidth="265.0" HBox.hgrow="ALWAYS" />
+                        <Region prefHeight="85.0" prefWidth="258.0" HBox.hgrow="ALWAYS"/>
+                        <ProgressIndicator fx:id="progressbar" prefHeight="85.0" prefWidth="0.0" progress="0.0"
+                                           HBox.hgrow="ALWAYS"/>
+                        <Region prefHeight="85.0" prefWidth="265.0" HBox.hgrow="ALWAYS"/>
                     </children>
                     <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="10.0"/>
                     </VBox.margin>
                 </HBox>
-                <TableView fx:id="filmTable" editable="true" onMouseClicked="#filmTableIsClicked" prefHeight="306.0" prefWidth="780.0">
+                <TableView fx:id="filmTable" editable="true" onMouseClicked="#filmTableIsClicked" prefHeight="306.0"
+                           prefWidth="780.0">
                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
                     </columnResizePolicy>
                 </TableView>
-                <Region prefHeight="30.0" />
+                <Region prefHeight="30.0"/>
             </children>
             <BorderPane.margin>
-                <Insets bottom="10.0" />
+                <Insets bottom="10.0"/>
             </BorderPane.margin>
         </VBox>
     </top>
@@ -71,48 +79,53 @@
             <children>
                 <VBox prefHeight="438.0" prefWidth="472.0">
                     <children>
-                        <Region prefHeight="50.0" />
-                        <Label fx:id="previewTitle" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="631.0" text="Filmtitel" textAlignment="CENTER">
+                        <Region prefHeight="50.0"/>
+                        <Label fx:id="previewTitle" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="35.0"
+                               prefWidth="631.0" text="Filmtitel" textAlignment="CENTER">
                             <font>
-                                <Font name="System Bold" size="25.0" />
+                                <Font name="System Bold" size="25.0"/>
                             </font>
                         </Label>
-                        <Region prefHeight="20.0" />
-                        <Label fx:id="previewDate" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="627.0" text="(Jahr)" textAlignment="CENTER">
+                        <Region prefHeight="20.0"/>
+                        <Label fx:id="previewDate" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="18.0"
+                               prefWidth="627.0" text="(Jahr)" textAlignment="CENTER">
                             <font>
-                                <Font size="15.0" />
+                                <Font size="15.0"/>
                             </font>
                         </Label>
-                        <Region prefHeight="30.0" />
-                        <Label fx:id="StoryLabel" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="626.0" text="Handlung" textAlignment="CENTER" underline="true">
+                        <Region prefHeight="30.0"/>
+                        <Label fx:id="StoryLabel" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="23.0"
+                               prefWidth="626.0" text="Handlung" textAlignment="CENTER" underline="true">
                             <font>
-                                <Font size="20.0" />
+                                <Font size="20.0"/>
                             </font>
                         </Label>
-                        <Region prefHeight="20.0" />
-                        <Label fx:id="previewOverview" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="240.0" prefWidth="825.0" text="Handlungstext" textAlignment="CENTER" wrapText="true">
+                        <Region prefHeight="20.0"/>
+                        <Label fx:id="previewOverview" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="240.0"
+                               prefWidth="825.0" text="Handlungstext" textAlignment="CENTER" wrapText="true">
                             <font>
-                                <Font size="15.0" />
+                                <Font size="15.0"/>
                             </font>
                         </Label>
                     </children>
                     <HBox.margin>
-                        <Insets left="50.0" />
+                        <Insets left="50.0"/>
                     </HBox.margin>
                 </VBox>
                 <VBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" HBox.hgrow="ALWAYS">
                     <children>
-                        <Region prefHeight="50.0" VBox.vgrow="ALWAYS" />
-                        <ImageView fx:id="previewPane" fitHeight="309.0" fitWidth="234.0" preserveRatio="true" VBox.vgrow="ALWAYS" />
+                        <Region prefHeight="50.0" VBox.vgrow="ALWAYS"/>
+                        <ImageView fx:id="previewPane" fitHeight="309.0" fitWidth="234.0" preserveRatio="true"
+                                   VBox.vgrow="ALWAYS"/>
                     </children>
                     <HBox.margin>
-                        <Insets right="50.0" />
+                        <Insets right="50.0"/>
                     </HBox.margin>
                 </VBox>
             </children>
         </HBox>
     </center>
     <padding>
-        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
     </padding>
 </BorderPane>
